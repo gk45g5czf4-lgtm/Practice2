@@ -1,4 +1,4 @@
-﻿#include <iostream> // Используем заголовочный файл потока ввода/вывода
+#include <iostream> // Используем заголовочный файл потока ввода/вывода
 #include <cmath> // Используем заголовочный файл математических функций
 
 #include "Переменные.cpp"
@@ -8,17 +8,6 @@ using namespace std; // Используем стандартную библио
 
 /*
     Групповое занятие: совместными усилиями реализовать доп. функции калькулятора
-
-    1) Назначьте руководителя проекта
-    Руководитель проекта должен создать репозиторий проекта калькулятора и добавить туда своих напарников.
-    Затем распределите подзадачи на каждого участника.
-
-    2) Каждый участник проекта должен запуллить проект из репозитория себе и создать ветку,
-    назвать её своим ФИО латиницей, выполнить свою подзадачу в ней, после чего создать
-    запрос на слияние ветвей (merge request)
-
-    3) Команда просматривает каждую ветку, оставляет свои комментарии по доработке, если необходимо, затем
-    руководитель проекта производит слияние в мастер-ветку. Итоговый проект должен корректно проводить вычисления
 
     ПОДЗАДАЧИ:
 
@@ -42,9 +31,6 @@ public:
     /// <summary>
     /// Вычисляет сумму двух чисел с плавающей запятой
     /// </summary>
-    /// <param name="a">Первое значение</param>
-    /// <param name="b">Второе значение</param>
-    /// <returns>Итоговая сумма</returns>
     static double Sum(double a, double b)
     {
         // Вычисляем
@@ -60,38 +46,56 @@ public:
     // Подзадача 2
     static double CircleArea(double radius)
     {
-        return 0;
+        const double PI = 3.14159265358979323846;
+        double area = PI * radius * radius;
+        double result = round(area * 100.0) / 100.0;
+        cout << "Площадь круга: " << result << endl;
+        return result;
     }
 
     // Подзадача 3
     static double RectangleArea(double first, double second)
     {
-        return 0;
+        double area = first * second;
+        double result = round(area * 100.0) / 100.0;
+        cout << "Площадь прямоугольника: " << result << endl;
+        return result;
     }
 
     // Подзадача 4
     static double TriangleArea(double first, double second, double third)
     {
-        return 0;
+        double p = (first + second + third) / 2;
+        double area = sqrt(p * (p - first) * (p - second) * (p - third));
+        double result = round(area * 100.0) / 100.0;
+        cout << "Площадь треугольника (по Герону): " << result << endl;
+        return result;
     }
 
     // Подзадача 5
     static double TriangleArea(double base, double height)
     {
-        return 0;
+        double area = 0.5 * base * height;
+        double result = round(area * 100.0) / 100.0;
+        cout << "Площадь треугольника (основание и высота): " << result << endl;
+        return result;
     }
 };
 
 int main()
 {
     Console::SetRussianOnWindows();
-    // Подзадача 1
 
-    // Для проверки задания: снять комментарии, заполнить методы переменными, 
-    // запустить и посмотреть консольный вывод
-    Calculator::Sum(3., 5.);
-    // Calculator::CircleArea();
-    // Calculator::RectangleArea();
-    // Calculator::TriangleArea();
-    // Calculator::TriangleArea();
+    // Подзадача 1
+    cout << "Введите три числа через пробел и нажмите Enter." << endl;
+    cout << "Они будут использованы для расчёта площадей." << endl;
+
+    double a, b, c;
+    cin >> a >> b >> c;
+
+    Calculator::Sum(a, b);
+    Calculator::CircleArea(a);
+    Calculator::RectangleArea(a, b);
+    Calculator::TriangleArea(a, b, c);
+    Calculator::TriangleArea(a, b);
 }
